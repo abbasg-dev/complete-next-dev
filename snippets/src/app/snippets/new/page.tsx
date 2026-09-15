@@ -17,11 +17,11 @@ export default function SnippetCreatePage() {
         code: code,
       },
     });
-    console.log(snippet);
 
     // Redirect the user back to the root route
     redirect("/");
   }
+
   return (
     <form className="flex flex-col gap-4" action={createSnippet}>
       <h3 className="font-bold m-3">Create a Snippet</h3>
