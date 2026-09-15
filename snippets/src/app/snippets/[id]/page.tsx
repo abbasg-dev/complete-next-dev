@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/app/db";
 
@@ -25,9 +26,12 @@ export default async function SnippetShowPage(props: SnippetShowPageProps) {
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold">{snippet.title}</h1>
         <div className="flex gap-4">
-          <button className="rounded border border-gray-300 px-4 py-2 hover:bg-gray-100">
+          <Link
+            href={`/snippets/${snippet.id}/edit`}
+            className="rounded border border-gray-300 px-4 py-2 hover:bg-gray-100"
+          >
             Edit
-          </button>
+          </Link>
           <button className="rounded border border-gray-300 px-4 py-2 hover:bg-gray-100">
             Delete
           </button>
