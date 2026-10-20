@@ -8,10 +8,32 @@ import {
   NavbarContent,
   NavbarItem,
   Input,
+  Avatar,
+  Button,
 } from "@nextui-org/react";
 
 export default function Header() {
   const { data: session } = useSession();
+
+  let authContent: React.ReactNode;
+  if (session?.user) {
+    authContent = <Avatar src={session.user.image || ""} />;
+  } else {
+    authContent = (
+      <>
+        <NavbarItem>
+          <Button type="submit" color="secondary" variant="bordered">
+            Sign In
+          </Button>
+        </NavbarItem>
+        <NavbarItem>
+          <Button type="submit" color="primary" variant="flat">
+            Sign Up
+          </Button>
+        </NavbarItem>
+      </>
+    );
+  }
 
   return (
     <Navbar className="shadow mb-6">
@@ -27,9 +49,7 @@ export default function Header() {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent justify="end">
-        <NavbarItem>{session?.user ? "Signed In" : "Signed Out"}</NavbarItem>
-      </NavbarContent>
+      <NavbarContent justify="end">{authContent}</NavbarContent>
     </Navbar>
   );
 }
