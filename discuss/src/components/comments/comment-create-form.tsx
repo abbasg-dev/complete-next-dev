@@ -21,7 +21,7 @@ export default function CommentCreateForm({
   const ref = useRef<HTMLFormElement | null>(null);
   const [formState, action, isPending] = useActionState(
     actions.createComment.bind(null, { postId, parentId }),
-    { errors: {} }
+    { errors: {} },
   );
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function CommentCreateForm({
 
   return (
     <div>
-      <Button size="sm" variant="light" onClick={() => setOpen(!open)}>
+      <Button size="sm" variant="light" onPress={() => setOpen(!open)}>
         Reply
       </Button>
       {open && form}
