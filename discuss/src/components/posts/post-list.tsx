@@ -9,7 +9,7 @@ interface PostListProps {
 export default async function PostList({ fetchData }: PostListProps) {
   const posts = await fetchData();
 
-  const renderedPosts = posts.map((post) => {
+  const renderedPosts = posts?.map((post) => {
     const topicSlug = post.topic.slug;
 
     if (!topicSlug) {
